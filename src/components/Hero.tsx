@@ -43,7 +43,7 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
               )}
             </h1>
 
-            <p className="animate-rise mt-7 max-w-xl text-lg text-cyan-400/40 leading-relaxed" style={{ animationDelay: '0.2s' }}>
+            <p className="animate-rise mt-7 max-w-xl text-lg text-slate-100/95 font-normal leading-relaxed drop-shadow-sm" style={{ animationDelay: '0.2s' }}>
               {t.hero.subtitle}
             </p>
 
