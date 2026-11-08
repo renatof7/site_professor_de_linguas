@@ -21,14 +21,24 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
               {t.hero.badge}
             </div>
 
-            <h1 className="animate-rise mt-7 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.04]" style={{ animationDelay: '0.1s' }}>
+            <h1 className="animate-rise mt-7 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15]" style={{ animationDelay: '0.1s' }}>
               {locale === 'pt' ? (
                 <>
-                  Fale português <span className="font-display italic font-medium text-gradient">como se vive</span> no Brasil.
+                  Fale português{' '}
+                  <span className="font-display italic font-medium text-gradient pr-1">
+                    como se
+                  </span>{' '}
+                  <span className="font-display italic font-medium text-gradient pr-1">
+                    vive
+                  </span>{' '}
+                  no Brasil.
                 </>
               ) : (
                 <>
-                  Speak Portuguese <span className="font-display italic font-medium text-gradient">the way Brazil lives it.</span>
+                  Speak Portuguese{' '}
+                  <span className="font-display italic font-medium text-gradient pr-1">
+                    the way Brazil lives it.
+                  </span>
                 </>
               )}
             </h1>
