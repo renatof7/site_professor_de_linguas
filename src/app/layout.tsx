@@ -7,13 +7,13 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakart
 const hand = Caveat({ subsets: ['latin'], variable: '--font-hand', weight: ['500', '700'] });
 
 export const metadata: Metadata = {
-  title: 'Teacher Vittor | Aprenda Português Brasileiro Real',
-  description: 'Aulas particulares de português do Brasil para estrangeiros. Metodologia prática, conversação ativa e horários adaptados ao seu fuso horário.',
+  title: 'Teacher Vittor | Learn Real Brazilian Portuguese',
+  description: 'Private Brazilian Portuguese lessons for foreigners. Practical methodology, active conversation and scheduling matched to your local timezone.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt" className={`${jakarta.variable} ${hand.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${hand.variable}`}>
       <body className="antialiased selection:bg-blue-200 selection:text-slate-900">
         <Providers>{children}</Providers>
       </body>

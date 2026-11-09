@@ -10,26 +10,33 @@ type LanguageContextType = {
 };
 
 const LanguageContext = createContext<LanguageContextType>({
-  locale: 'pt',
+  locale: 'en',
   setLocale: () => {},
-  t: dictionaries.pt,
+  t: dictionaries.en,
 });
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [locale, setLocale] = useState<Locale>('pt');
+  const [locale, setLocale] = useState<Locale>('en');
 
   useEffect(() => {
-    // Detectar idioma do navegador se preferir inglês
-    const browserLang = navigator.language?.toLowerCase();
-    if (browserLang && !browserLang.startsWith('pt')) {
-      setLocale('en');
+    // Verificar se o usuário já havia escolhido um idioma manualmente
+    const saved = localStorage.getItem('tv_locale') as Locale | null;
+    if (saved && (saved === 'pt' || saved === 'en')) {
+      setLocale(saved);
     }
   }, []);
+
+  const handleSetLocale = (lang: Locale) => {
+    setLocale(lang);
+    try {
+      localStorage.setItem('tv_locale', lang);
+    } catch {}
+  };
 
   const t = dictionaries[locale];
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider value={{ locale, setLocale: handleSetLocale, t }}>
       {children}
     </LanguageContext.Provider>
   );
