@@ -11,8 +11,11 @@ export default function AuthCallback() {
 
   useEffect(() => {
     if (loading) return;
-    if (user && profile) router.replace(profile.role === 'admin' ? '/admin' : '/dashboard');
-    else if (!user) {
+    if (user) {
+      const isTeacher = user.email?.toLowerCase().trim() === 'teacher.vittor@gmail.com';
+      const isAdmin = profile?.role === 'admin' || isTeacher;
+      router.replace(isAdmin ? '/admin' : '/dashboard');
+    } else {
       const t = setTimeout(() => router.replace('/'), 4000);
       return () => clearTimeout(t);
     }
