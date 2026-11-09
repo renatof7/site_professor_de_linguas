@@ -128,7 +128,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
         {/* Header do Modal */}
         <div className="px-6 py-5 bg-gradient-to-r from-blue-50 to-sky-50 border-b border-white/15 flex items-center justify-between">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 font-bold block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-200 font-bold block">
               Passo {step} de 3
             </span>
             <h2 className="text-xl font-bold text-white font-extrabold">
@@ -140,7 +140,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
 
           <button
             onClick={onClose}
-            className="p-2 text-sky-100/80 hover:text-white hover:glass rounded-2xl transition-colors"
+            className="p-2 text-sky-100 hover:text-white hover:glass rounded-2xl transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -160,13 +160,13 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
           {step === 1 && (
             <div className="space-y-6">
               {/* Aviso do Fuso Horário Local */}
-              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-800/80/80 border border-blue-100 text-cyan-200 font-bold text-xs sm:text-sm">
-                <Globe className="w-5 h-5 text-amber-300 font-bold shrink-0" />
+              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-800/80/80 border border-blue-100 text-cyan-100 font-bold text-xs sm:text-sm">
+                <Globe className="w-5 h-5 text-cyan-200 font-bold shrink-0" />
                 <div>
-                  <span className="text-cyan-400/40 block sm:inline">
+                  <span className="text-slate-100 block sm:inline">
                     {t.modal.timezoneNotice}{' '}
                   </span>
-                  <strong className="text-cyan-200 font-bold underline font-bold">
+                  <strong className="text-cyan-100 font-bold underline font-bold">
                     {userTimezone}
                   </strong>
                 </div>
@@ -174,7 +174,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
 
               {/* Seletor de Dias */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-sky-100/90 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-white mb-3">
                   Selecione o Dia:
                 </label>
                 <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
@@ -207,7 +207,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
 
               {/* Seletor de Horários */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-sky-100/90 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-white mb-3">
                   Horários Disponíveis (no seu horário local):
                 </label>
 
@@ -225,14 +225,14 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                               : 'glass border-white/15 hover:border-blue-300 text-white'
                           }`}
                         >
-                          <Clock className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-amber-300 font-bold'}`} />
+                          <Clock className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-cyan-200 font-bold'}`} />
                           <span>{slot.hora_inicio.substring(0, 5)}</span>
                         </button>
                       );
                     })}
                   </div>
                 ) : (
-                  <div className="p-6 text-center rounded-2xl bg-slate-900/80 border border-dashed border-white/15 text-sky-100/90 text-xs sm:text-sm">
+                  <div className="p-6 text-center rounded-2xl bg-slate-900/80 border border-dashed border-white/15 text-white text-xs sm:text-sm">
                     {t.modal.noSlots}
                   </div>
                 )}
@@ -253,14 +253,14 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                     <span className="font-bold text-white font-extrabold block">
                       {format(selectedDate, 'dd/MM/yyyy')} às {selectedSlot}
                     </span>
-                    <span className="text-xs text-sky-100/90">
+                    <span className="text-xs text-white">
                       Fuso horário: {userTimezone}
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setStep(1)}
-                  className="text-xs text-amber-300 font-bold font-bold hover:underline"
+                  className="text-xs text-cyan-200 font-bold font-bold hover:underline"
                 >
                   Alterar
                 </button>
@@ -269,13 +269,13 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
               {!user ? (
                 /* Se NÃO está logado: Botão Login com Google obrigatório */
                 <div className="text-center py-6 px-4 bg-slate-800/80/50 rounded-2xl border border-white/15">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-100 text-amber-300 font-bold mx-auto flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-100 text-cyan-200 font-bold mx-auto flex items-center justify-center mb-4">
                     <LogIn className="w-6 h-6" />
                   </div>
                   <h3 className="font-bold text-white text-lg mb-2">
                     Faça login para continuar
                   </h3>
-                  <p className="text-cyan-400/40 text-xs sm:text-sm mb-6 max-w-sm mx-auto">
+                  <p className="text-slate-100 text-xs sm:text-sm mb-6 max-w-sm mx-auto">
                     {t.modal.loginRequired}
                   </p>
 
@@ -315,7 +315,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                       <p className="text-sm font-bold text-white">
                         {profile?.nome || user.user_metadata?.full_name || 'Aluno'}
                       </p>
-                      <p className="text-xs text-sky-100/90">{user.email}</p>
+                      <p className="text-xs text-white">{user.email}</p>
                     </div>
                   </div>
 
@@ -324,7 +324,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                       {t.modal.whatsappLabel}
                     </label>
                     <div className="relative">
-                      <Phone className="w-5 h-5 text-sky-100/80 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <Phone className="w-5 h-5 text-sky-100 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
                         value={whatsappInput}
@@ -333,7 +333,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                         className="w-full pl-11 pr-4 py-3 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
                       />
                     </div>
-                    <span className="text-[11px] text-sky-100/90 mt-1 block">
+                    <span className="text-[11px] text-white mt-1 block">
                       Usamos apenas para enviar lembretes e materiais da aula.
                     </span>
                   </div>
@@ -354,7 +354,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                 <h3 className="text-2xl font-black text-white font-extrabold mb-2">
                   {t.modal.successTitle}
                 </h3>
-                <p className="text-cyan-400/40 text-sm max-w-md mx-auto leading-relaxed">
+                <p className="text-slate-100 text-sm max-w-md mx-auto leading-relaxed">
                   {t.modal.successDesc}
                 </p>
               </div>
@@ -366,10 +366,10 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                     <Video className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-sky-100/80">
+                    <span className="text-[10px] uppercase font-bold text-sky-100">
                       Sala Google Meet Gerada
                     </span>
-                    <p className="text-xs font-bold text-cyan-200 font-bold truncate max-w-[200px] sm:max-w-xs">
+                    <p className="text-xs font-bold text-cyan-100 font-bold truncate max-w-[200px] sm:max-w-xs">
                       {meetLinkCreated || 'https://meet.google.com/abc-demo-xyz'}
                     </p>
                   </div>
@@ -396,7 +396,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
             {step === 2 ? (
               <button
                 onClick={() => setStep(1)}
-                className="flex items-center gap-2 text-xs font-bold text-cyan-400/40 hover:text-white px-3 py-2 rounded-xl"
+                className="flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-white px-3 py-2 rounded-xl"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Voltar

@@ -25,11 +25,11 @@ export function Testimonials() {
     <section id="depoimentos" className="relative bg-transparent py-28 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-16">
-          <span className="text-xs font-bold tracking-[0.2em] text-sky-300 uppercase">— {t.testimonials.tag}</span>
+          <span className="text-xs font-bold tracking-[0.2em] text-cyan-100 uppercase">— {t.testimonials.tag}</span>
           <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
             {t.testimonials.title}
           </h2>
-          <p className="mt-5 text-sky-100/80 text-lg">{t.testimonials.subtitle}</p>
+          <p className="mt-5 text-sky-100 text-lg">{t.testimonials.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -46,7 +46,7 @@ export function Testimonials() {
                     <Star key={k} className="w-4 h-4 fill-amber-400" />
                   ))}
                 </div>
-                <blockquote className="font-display text-lg leading-snug text-cyan-400/40">
+                <blockquote className="font-display text-lg leading-snug text-slate-100">
                   “{it.texto_avaliacao}”
                 </blockquote>
               </div>
@@ -56,7 +56,7 @@ export function Testimonials() {
                 </span>
                 <div>
                   <p className="text-sm font-bold text-white">{it.nome_aluno}</p>
-                  <p className="text-[11px] text-sky-100/80">{it.codigo_pais}</p>
+                  <p className="text-[11px] text-sky-100">{it.codigo_pais}</p>
                 </div>
               </figcaption>
             </figure>

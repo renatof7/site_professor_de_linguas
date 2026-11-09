@@ -20,7 +20,7 @@ export function Footer({ onOpenBooking }: { onOpenBooking: () => void }) {
               <>Ready to speak <span className="font-display italic font-medium text-gradient">for real?</span></>
             )}
           </h3>
-          <p className="mt-6 text-cyan-400/40 text-lg max-w-xl mx-auto">
+          <p className="mt-6 text-slate-100 text-lg max-w-xl mx-auto">
             {pt
               ? 'Agende sua aula experimental gratuita e receba um plano de estudos personalizado.'
               : 'Book your free trial class and get a personalized study plan.'}
@@ -35,10 +35,10 @@ export function Footer({ onOpenBooking }: { onOpenBooking: () => void }) {
             </span>
           </button>
 
-          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sky-100/80">
+          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sky-100">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 text-white flex items-center justify-center font-black text-xs">V</div>
-              <span className="font-semibold text-cyan-400/40">Teacher Vittor</span>
+              <span className="font-semibold text-slate-100">Teacher Vittor</span>
             </div>
             <span>© {new Date().getFullYear()} · {pt ? 'Feito no Brasil para o mundo' : 'Made in Brazil for the world'}</span>
           </div>

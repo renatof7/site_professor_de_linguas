@@ -18,14 +18,14 @@ export function Method() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-end mb-16">
           <div>
-            <span className="inline-block text-xs font-bold tracking-[0.2em] text-amber-300 font-bold uppercase mb-4">
+            <span className="inline-block text-xs font-bold tracking-[0.2em] text-cyan-200 font-bold uppercase mb-4">
               — {t.method.tag}
             </span>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
               {t.method.title}
             </h2>
           </div>
-          <p className="text-sky-100/80 text-lg lg:max-w-md lg:ml-auto">{t.method.subtitle}</p>
+          <p className="text-sky-100 text-lg lg:max-w-md lg:ml-auto">{t.method.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -40,12 +40,12 @@ export function Method() {
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${c.accent} flex items-center justify-center text-white`}>
                     <Icon className="w-7 h-7" />
                   </div>
-                  <span className="font-display text-6xl italic text-cyan-400/40 group-hover:text-blue-200 transition-colors leading-none">
+                  <span className="font-display text-6xl italic text-slate-100 group-hover:text-blue-200 transition-colors leading-none">
                     {c.n}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{c.title}</h3>
-                <p className="text-sky-100/80 text-sm leading-relaxed">{c.desc}</p>
+                <p className="text-sky-100 text-sm leading-relaxed">{c.desc}</p>
               </div>
             );
           })}

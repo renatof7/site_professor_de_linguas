@@ -46,11 +46,11 @@ export function Header({ onOpenBooking }: { onOpenBooking: () => void }) {
               V
             </div>
             <span className="font-bold text-white tracking-tight">
-              Teacher <span className="text-sky-300">Vittor</span>
+              Teacher <span className="text-cyan-100">Vittor</span>
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-cyan-400/40">
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-100">
             {links.map(([href, label]) => (
               <a key={href} href={href} className="hover:text-white transition-colors">
                 {label}
@@ -65,7 +65,7 @@ export function Header({ onOpenBooking }: { onOpenBooking: () => void }) {
                   key={l}
                   onClick={() => setLocale(l)}
                   className={`px-2.5 py-1 rounded-full transition-all uppercase ${
-                    locale === l ? 'glass text-white' : 'text-sky-100/80 hover:text-white'
+                    locale === l ? 'glass text-white' : 'text-sky-100 hover:text-white'
                   }`}
                 >
                   {l}
@@ -89,7 +89,7 @@ export function Header({ onOpenBooking }: { onOpenBooking: () => void }) {
                 <button
                   onClick={signOut}
                   title={t.nav.logout}
-                  className="p-2 text-sky-100/80 hover:text-red-400 rounded-full transition-colors"
+                  className="p-2 text-sky-100 hover:text-red-400 rounded-full transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>
@@ -97,7 +97,7 @@ export function Header({ onOpenBooking }: { onOpenBooking: () => void }) {
             ) : (
               <button
                 onClick={() => signInWithGoogle()}
-                className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full text-cyan-400/40 hover:text-white text-xs font-semibold transition-colors"
+                className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full text-slate-100 hover:text-white text-xs font-semibold transition-colors"
               >
                 <LogIn className="w-4 h-4" />
                 {t.nav.loginGoogle}

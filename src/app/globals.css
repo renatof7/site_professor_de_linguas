@@ -34,9 +34,9 @@ body {
   font-family: var(--font-hand), cursive;
 }
 
-/* Destaque em ciano e dourado radiante com padding para evitar corte em fontes cursivas */
+/* Destaque em ciano luminoso e dourado com alto contraste e padding para cursiva */
 .text-gradient {
-  background: linear-gradient(100deg, #38bdf8 0%, #34d399 50%, #facc15 100%);
+  background: linear-gradient(100deg, #67e8f9 0%, #a5f3fc 45%, #fde047 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -44,6 +44,7 @@ body {
   padding-right: 0.25em;
   padding-left: 0.05em;
   overflow: visible;
+  filter: drop-shadow(0 2px 8px rgba(34, 211, 238, 0.3));
 }
 
 /* Vidro escuro translúcido sofisticado (Dark Glassmorphism) */

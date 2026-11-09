@@ -30,12 +30,12 @@ export function VideoSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-end mb-16">
           <div>
-            <span className="text-xs font-bold tracking-[0.2em] text-amber-300 font-bold uppercase">— {t.videos.tag}</span>
+            <span className="text-xs font-bold tracking-[0.2em] text-cyan-200 font-bold uppercase">— {t.videos.tag}</span>
             <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
               {t.videos.title}
             </h2>
           </div>
-          <p className="text-sky-100/80 text-lg lg:max-w-md lg:ml-auto">{t.videos.subtitle}</p>
+          <p className="text-sky-100 text-lg lg:max-w-md lg:ml-auto">{t.videos.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -54,13 +54,13 @@ export function VideoSection() {
                 </span>
                 {!user && (
                   <span className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/70 text-[11px] font-semibold text-white backdrop-blur">
-                    <Lock className="w-3 h-3 text-sky-300" /> Login
+                    <Lock className="w-3 h-3 text-cyan-100" /> Login
                   </span>
                 )}
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-lg text-white group-hover:text-amber-300 font-bold transition-colors leading-snug">{v.titulo}</h3>
-                <p className="mt-2 text-sm text-sky-100/80 line-clamp-2">{v.descricao}</p>
+                <h3 className="font-bold text-lg text-white group-hover:text-cyan-200 font-bold transition-colors leading-snug">{v.titulo}</h3>
+                <p className="mt-2 text-sm text-sky-100 line-clamp-2">{v.descricao}</p>
               </div>
             </button>
           ))}
@@ -70,16 +70,16 @@ export function VideoSection() {
       {showLogin && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md animate-in">
           <div className="relative glass border border-white/10 rounded-[2rem] max-w-md w-full p-8 text-center shadow-2xl">
-            <button onClick={() => setShowLogin(false)} className="absolute top-4 right-4 p-2 text-sky-100/80 hover:text-white rounded-full">
+            <button onClick={() => setShowLogin(false)} className="absolute top-4 right-4 p-2 text-sky-100 hover:text-white rounded-full">
               <X className="w-5 h-5" />
             </button>
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white mx-auto flex items-center justify-center mb-6">
               <Lock className="w-7 h-7" />
             </div>
-            <p className="text-cyan-400/40 mb-8 leading-relaxed">{t.videos.watchPrompt}</p>
+            <p className="text-slate-100 mb-8 leading-relaxed">{t.videos.watchPrompt}</p>
             <button
               onClick={() => { setShowLogin(false); signInWithGoogle(); }}
-              className="w-full py-3.5 rounded-full glass text-white font-bold hover:bg-slate-800/800/20 transition-colors cursor-pointer"
+              className="w-full py-3.5 rounded-full glass text-white font-bold hover:bg-sky-400/20 transition-colors cursor-pointer"
             >
               {t.videos.loginToUnlock}
             </button>

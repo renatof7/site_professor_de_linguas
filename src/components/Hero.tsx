@@ -16,7 +16,7 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-14 items-center">
           <div className="lg:col-span-7">
-            <div className="animate-rise inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-sky-300">
+            <div className="animate-rise inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-cyan-100">
               <Sparkles className="w-3.5 h-3.5" />
               {t.hero.badge}
             </div>
@@ -57,7 +57,7 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
                   <ArrowUpRight className="w-5 h-5" />
                 </span>
               </button>
-              <p className="text-sm text-sky-100/80 max-w-[220px] leading-snug">{t.hero.ctaSub}</p>
+              <p className="text-sm text-sky-100 max-w-[220px] leading-snug">{t.hero.ctaSub}</p>
             </div>
 
             <div className="animate-rise mt-12 flex items-center gap-4" style={{ animationDelay: '0.4s' }}>
@@ -74,7 +74,7 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
                     <Star key={i} className="w-4 h-4 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-xs font-semibold text-cyan-400/40 mt-0.5">{t.hero.socialProof}</p>
+                <p className="text-xs font-semibold text-slate-100 mt-0.5">{t.hero.socialProof}</p>
               </div>
             </div>
           </div>
@@ -93,18 +93,18 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
                       </p>
                     </div>
                   </div>
-                  <Video className="w-5 h-5 text-sky-100/80" />
+                  <Video className="w-5 h-5 text-sky-100" />
                 </div>
 
                 <div className="space-y-3 text-sm">
-                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm glass/10 px-4 py-3 text-cyan-400/40">
+                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm glass/10 px-4 py-3 text-slate-100">
                     Oi! Tudo bem? 👋
                   </div>
                   <div className="max-w-[85%] ml-auto rounded-2xl rounded-tr-sm bg-gradient-to-br from-blue-600 to-blue-500 px-4 py-3 text-white">
                     Tudo ótimo! Hoje eu quero pedir um café.
                   </div>
-                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm glass/10 px-4 py-3 text-cyan-400/40">
-                    Perfeito! Diga: <span className="text-sky-300 font-semibold">“Me vê um cafezinho, por favor?”</span> ☕
+                  <div className="max-w-[85%] rounded-2xl rounded-tl-sm glass/10 px-4 py-3 text-slate-100">
+                    Perfeito! Diga: <span className="text-cyan-100 font-semibold">“Me vê um cafezinho, por favor?”</span> ☕
                   </div>
                   <div className="flex items-center gap-2 text-[11px] text-emerald-700 pl-1">
                     <Check className="w-3.5 h-3.5" /> Pronúncia 94% natural
@@ -114,13 +114,13 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
 
               <div className="animate-float absolute -top-6 -right-4 glass rounded-2xl px-4 py-3 bg-slate-900/70">
                 <p className="text-2xl font-extrabold text-white leading-none">7+</p>
-                <p className="text-[10px] text-sky-100/80 mt-1">anos de experiência</p>
+                <p className="text-[10px] text-sky-100 mt-1">anos de experiência</p>
               </div>
               <div className="animate-float-slow absolute -bottom-6 -left-6 glass rounded-2xl px-4 py-3 bg-slate-900/70 flex items-center gap-3">
-                <Globe2 className="w-6 h-6 text-sky-300" />
+                <Globe2 className="w-6 h-6 text-cyan-100" />
                 <div>
                   <p className="text-xs font-bold text-white">Seu fuso, automático</p>
-                  <p className="text-[10px] text-sky-100/80">Qualquer lugar do mundo</p>
+                  <p className="text-[10px] text-sky-100">Qualquer lugar do mundo</p>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@ export function Hero({ onOpenBooking }: { onOpenBooking: () => void }) {
 
       {/* Countries marquee */}
       <div className="relative mt-24 border-y border-white/10 glass/50 py-5 overflow-hidden">
-        <div className="flex w-max animate-marquee gap-12 text-sm font-semibold text-sky-100/80">
+        <div className="flex w-max animate-marquee gap-12 text-sm font-semibold text-sky-100">
           {[...countries, ...countries].map((c, i) => (
             <span key={i} className="whitespace-nowrap">{c}</span>
           ))}
