@@ -205,3 +205,26 @@ INSERT INTO public.content_videos (titulo, youtube_id, descricao, ordem) VALUES
 ('Como soar como um nativo no Brasil: Gírias essenciais', 'dQw4w9WgXcQ', 'Aprenda os segredos da entonação e expressões que você não encontra nos livros.', 1),
 ('Diferença entre "Por que", "Por quê", "Porque" e "Porquê"', 'dQw4w9WgXcQ', 'Guia definitivo e prático para nunca mais errar.', 2),
 ('Pedindo comida e café no Brasil sem passar vergonha', 'dQw4w9WgXcQ', 'Simulação de diálogos reais em cafeterias e botecos.', 3);
+
+
+-- ==============================================================================
+-- 7. TABELA: site_content (CMS DINÂMICO PARA TEXTOS DO SITE)
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS public.site_content (
+  key TEXT PRIMARY KEY,
+  content_en JSONB NOT NULL,
+  content_pt JSONB NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()) NOT NULL
+);
+
+ALTER TABLE public.site_content ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Site content viewable by everyone" ON public.site_content;
+CREATE POLICY "Site content viewable by everyone"
+ON public.site_content FOR SELECT
+USING (true);
+
+DROP POLICY IF EXISTS "Only admin can manage site content" ON public.site_content;
+CREATE POLICY "Only admin can manage site content"
+ON public.site_content FOR ALL
+USING (public.is_admin());
