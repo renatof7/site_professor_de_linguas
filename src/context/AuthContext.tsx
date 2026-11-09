@@ -38,9 +38,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const fetchProfile = async (u: User) => {
+    const isTeacherEmail = u.email?.toLowerCase().trim() === 'teacher.vittor@gmail.com';
+
     try {
       const { data, error } = await supabase.from('profiles').select('*').eq('id', u.id).single();
       if (data) {
+        // Se no banco ainda estiver como estudante mas o e-mail for do professor, promove para admin:
+        if (isTeacherEmail && data.role !== 'admin') {
+          const updatedProfile: Profile = { ...(data as Profile), role: 'admin' };
+          setProfile(updatedProfile);
+          await supabase.from('profiles').update({ role: 'admin' }).eq('id', u.id);
+          return;
+        }
         setProfile(data as Profile);
         return;
       }
@@ -49,7 +58,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     // Se ainda não existir a linha na tabela ou se for o e-mail master do professor:
-    const isTeacherEmail = u.email?.toLowerCase() === 'teacher.vittor@gmail.com';
     const fallbackProfile: Profile = {
       id: u.id,
       email: u.email || '',
@@ -59,7 +67,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     setProfile(fallbackProfile);
 
-    // Se for o professor e a linha ainda não estava como admin no banco, tenta garantir o upsert:
+    // Se for o professor, garante a inserção imediata com role admin no banco:
     if (isTeacherEmail) {
       try {
         await supabase.from('profiles').upsert({

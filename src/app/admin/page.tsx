@@ -156,7 +156,10 @@ export default function AdminDashboard() {
     return <div className="min-h-screen flex items-center justify-center text-slate-300">Carregando painel...</div>;
   }
 
-  if (!user || profile?.role !== 'admin') {
+  const isTeacher = user?.email?.toLowerCase().trim() === 'teacher.vittor@gmail.com';
+  const isAdmin = profile?.role === 'admin' || isTeacher;
+
+  if (!user || !isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="glass p-8 rounded-3xl border border-white/10 shadow-2xl max-w-md w-full text-center">
