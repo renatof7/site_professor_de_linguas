@@ -39,7 +39,7 @@ const defaultAvailability: TeacherAvailability[] = [
 ];
 
 export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: BookingModalProps) {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const { user, profile, signInWithGoogle, updateWhatsapp } = useAuth();
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -66,6 +66,16 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
       setWhatsappInput(profile.whatsapp);
     }
   }, [profile]);
+
+  // Fechar com tecla Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -123,15 +133,21 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-blue-950/60 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="glass rounded-3xl max-w-2xl w-full shadow-2xl border border-white/15 overflow-hidden flex flex-col max-h-[90vh]">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-blue-950/60 backdrop-blur-md animate-in fade-in duration-200"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="glass rounded-3xl max-w-2xl w-full shadow-2xl border border-white/15 overflow-hidden flex flex-col max-h-[90vh]"
+      >
         {/* Header do Modal */}
-        <div className="px-6 py-5 bg-gradient-to-r from-blue-50 to-sky-50 border-b border-white/15 flex items-center justify-between">
+        <div className="px-6 py-5 bg-slate-900/90 border-b border-white/15 flex items-center justify-between">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-200 font-bold block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-300 block">
               Passo {step} de 3
             </span>
-            <h2 className="text-xl font-bold text-white font-extrabold">
+            <h2 className="text-xl font-extrabold text-white">
               {step === 1 && t.modal.step1Title}
               {step === 2 && t.modal.step2Title}
               {step === 3 && t.modal.step3Title}
@@ -139,17 +155,19 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
           </div>
 
           <button
+            type="button"
             onClick={onClose}
-            className="p-2 text-sky-100 hover:text-white hover:glass rounded-2xl transition-colors"
+            aria-label={locale === 'pt' ? 'Fechar' : 'Close'}
+            className="p-2 text-slate-200 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Stepper Progress bar */}
-        <div className="w-full bg-sky-100 h-1.5">
+        <div className="w-full bg-slate-800 h-1.5">
           <div
-            className="bg-blue-600 h-1.5 transition-all duration-300"
+            className="bg-gradient-to-r from-blue-500 to-cyan-400 h-1.5 transition-all duration-300"
             style={{ width: `${(step / 3) * 100}%` }}
           />
         </div>
@@ -160,7 +178,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
           {step === 1 && (
             <div className="space-y-6">
               {/* Aviso do Fuso Horário Local */}
-              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-800/80/80 border border-blue-100 text-cyan-100 font-bold text-xs sm:text-sm">
+              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-800/80 border border-white/15 text-cyan-100 font-bold text-xs sm:text-sm">
                 <Globe className="w-5 h-5 text-cyan-200 font-bold shrink-0" />
                 <div>
                   <span className="text-slate-100 block sm:inline">
@@ -244,7 +262,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
           {step === 2 && (
             <div className="space-y-6">
               {/* Resumo da data selecionada */}
-              <div className="p-4 rounded-2xl bg-slate-800/80/70 border border-blue-100 flex items-center justify-between text-sm">
+              <div className="p-4 rounded-2xl bg-slate-800/80 border border-white/15 flex items-center justify-between text-sm">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-xl bg-blue-600 text-white">
                     <CalendarIcon className="w-5 h-5" />
@@ -268,8 +286,8 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
 
               {!user ? (
                 /* Se NÃO está logado: Botão Login com Google obrigatório */
-                <div className="text-center py-6 px-4 bg-slate-800/80/50 rounded-2xl border border-white/15">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-100 text-cyan-200 font-bold mx-auto flex items-center justify-center mb-4">
+                <div className="text-center py-6 px-4 bg-slate-800/60 rounded-2xl border border-white/15">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/30 text-cyan-200 font-bold mx-auto flex items-center justify-center mb-4">
                     <LogIn className="w-6 h-6" />
                   </div>
                   <h3 className="font-bold text-white text-lg mb-2">
@@ -330,7 +348,7 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
                         value={whatsappInput}
                         onChange={(e) => setWhatsappInput(e.target.value)}
                         placeholder={t.modal.whatsappPlaceholder}
-                        className="w-full pl-11 pr-4 py-3 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
+                        className="w-full pl-11 pr-4 py-3 rounded-2xl bg-slate-900/70 text-white placeholder:text-slate-400 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
                       />
                     </div>
                     <span className="text-[11px] text-white mt-1 block">
@@ -395,14 +413,22 @@ export function BookingModal({ isOpen, onClose, tipoAula = 'experimental' }: Boo
           <div className="px-6 py-4 bg-slate-900/80 border-t border-white/10 flex items-center justify-between">
             {step === 2 ? (
               <button
+                type="button"
                 onClick={() => setStep(1)}
-                className="flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-white px-3 py-2 rounded-xl"
+                className="flex items-center gap-2 text-xs font-bold text-slate-100 hover:text-white px-3 py-2 rounded-xl hover:bg-white/10 transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Voltar
+                {locale === 'pt' ? 'Voltar' : 'Back'}
               </button>
             ) : (
-              <div />
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex items-center gap-2 text-xs font-bold text-slate-200 hover:text-white px-3.5 py-2 rounded-xl border border-white/15 hover:bg-white/10 transition-colors cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                {locale === 'pt' ? 'Fechar' : 'Close'}
+              </button>
             )}
 
             {step === 1 && (
